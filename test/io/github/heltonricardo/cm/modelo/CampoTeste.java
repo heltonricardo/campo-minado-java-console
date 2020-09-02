@@ -1,6 +1,7 @@
 package io.github.heltonricardo.cm.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -23,14 +24,18 @@ public class CampoTeste {
 		assertAll(
 				() -> assertTrue(campo.adicionarVizinho(new Campo(4, 4))),
 				() -> assertTrue(campo.adicionarVizinho(new Campo(4, 5))),
-				() -> assertTrue(campo.adicionarVizinho(new Campo(4, 6))),
-				() -> assertTrue(campo.adicionarVizinho(new Campo(5, 4))),
-				() -> assertTrue(campo.adicionarVizinho(new Campo(5, 6))),
-				() -> assertTrue(campo.adicionarVizinho(new Campo(6, 4))),
-				() -> assertTrue(campo.adicionarVizinho(new Campo(6, 5))),
-				() -> assertTrue(campo.adicionarVizinho(new Campo(6, 6)))
+				() -> assertTrue(campo.adicionarVizinho(new Campo(5, 4)))
 		);
 	}
 	
-	
+	@Test
+	void testeNaoVizinhos() {
+		assertAll(
+				() -> assertFalse(campo.adicionarVizinho(new Campo(3, 3))),
+				() -> assertFalse(campo.adicionarVizinho(new Campo(3, 4))),
+				() -> assertFalse(campo.adicionarVizinho(new Campo(3, 5))),
+				() -> assertFalse(campo.adicionarVizinho(new Campo(4, 3))),
+				() -> assertFalse(campo.adicionarVizinho(new Campo(5, 3)))
+		);
+	}
 }
