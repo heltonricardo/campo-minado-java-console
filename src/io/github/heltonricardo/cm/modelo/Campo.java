@@ -12,11 +12,20 @@ public class Campo {
 	private boolean minado;
 	private boolean marcado;
 	
-	List<Campo> vizinhos = new ArrayList<Campo>();
+	private List<Campo> vizinhos = new ArrayList<Campo>();
 	
 	Campo(int linha, int coluna) {
 		this.linha = linha;
 		this.coluna = coluna;
 	}
 	
+	boolean adicionarVizinho(Campo vizinho) {
+		int d = (int) (Math.sqrt(Math.pow(this.linha - vizinho.linha, 2) + 
+				       Math.pow(this.coluna - vizinho.coluna, 2)));
+		if (d == 1) {
+			vizinhos.add(vizinho);
+			return true;
+		}
+		return false;
+	}
 }
