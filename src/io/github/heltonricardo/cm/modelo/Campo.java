@@ -21,6 +21,14 @@ public class Campo {
 		this.coluna = coluna;
 	}
 	
+	public boolean isMarcado() {
+		return marcado;
+	}
+	
+	void minar() {
+		minado = true;
+	}
+	
 	boolean adicionarVizinho(Campo vizinho) {
 		int d = (int) (Math.sqrt(Math.pow(linha - vizinho.linha, 2) + 
 				       Math.pow(coluna - vizinho.coluna, 2)));
