@@ -24,7 +24,7 @@ public class Tabuleiro {
 
 	private void gerarCampos() {
 		for (int i = 0; i < linhas; ++i)
-			for (int j = 0; j < linhas; ++j)
+			for (int j = 0; j < colunas; ++j)
 				campos.add(new Campo(i, j));
 		
 	}
@@ -58,4 +58,32 @@ public class Tabuleiro {
 		campos.stream().forEach(c -> c.reiniciar());
 		sortearMinas();
 	}
+	
+	public void abrir(int linha, int coluna) {
+		if (0 <= linha && linha < linhas && 0 <= coluna && coluna < colunas)
+			campos.get(linha * colunas + coluna).abrir();
+	}
+	
+	public void AlterarMarcacao(int linha, int coluna) {
+		if (0 <= linha && linha < linhas && 0 <= coluna && coluna < colunas)
+			campos.get(linha * colunas + coluna).alternarMarcacao();
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < linhas; ++i) {
+			for (int j = 0; j < colunas; ++j) {
+				sb.append(" ");
+				sb.append(campos.get(i * colunas + j));
+				sb.append(" ");
+			}
+			sb.append("\n");
+		}
+				
+		return sb.toString();
+	}
+	
+	
 }
