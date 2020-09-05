@@ -72,7 +72,7 @@ public class Campo {
 	
 	boolean objetivoAlcancado() {
 		boolean desvendado = aberto && !minado;
-		boolean protegido = !minado && !marcado;
+		boolean protegido = minado && marcado;
 		
 		return desvendado || protegido;
 	}
@@ -103,7 +103,7 @@ public class Campo {
 	@Override
 	public String toString() {
 		if (marcado)
-			return "x";
+			return "X";
 		else if (aberto && minado)
 			return "*";
 		else if (aberto && minasNaVizinhanca() > 0)
