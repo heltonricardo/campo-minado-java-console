@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import io.github.heltonricardo.cm.excecao.ExplosaoException;
+
 public class Tabuleiro {
 
 	private int linhas;
@@ -60,8 +62,13 @@ public class Tabuleiro {
 	}
 	
 	public void abrir(int linha, int coluna) {
-		if (0 <= linha && linha < linhas && 0 <= coluna && coluna < colunas)
-			campos.get(linha * colunas + coluna).abrir();
+		try {
+			if (0 <= linha && linha < linhas && 0 <= coluna && coluna < colunas)
+				campos.get(linha * colunas + coluna).abrir();
+		} catch (ExplosaoException e) {
+			campos.forEach(c -> c.setAberto(true));
+			throw e;
+		}
 	}
 	
 	public void AlterarMarcacao(int linha, int coluna) {
