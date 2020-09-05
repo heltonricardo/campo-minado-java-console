@@ -53,7 +53,7 @@ public class Tabuleiro {
 	}
 	
 	public boolean objetivoAlcancado() {
-		return campos.parallelStream().allMatch(c -> c.objetivoAlcancado());
+		return campos.stream().allMatch(c -> c.objetivoAlcancado());
 	}
 	
 	public void reiniciar() {
@@ -80,7 +80,16 @@ public class Tabuleiro {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
+		sb.append("     ");
+		for (int i = 0; i < colunas; ++i)
+			sb.append(" " + i + " ");
+		sb.append("\n     ");
+		for (int i = 0; i < colunas; ++i)
+			sb.append(" v ");
+		sb.append("\n\n");
+		
 		for (int i = 0; i < linhas; ++i) {
+			sb.append(" " + i + " > ");
 			for (int j = 0; j < colunas; ++j) {
 				sb.append(" ");
 				sb.append(campos.get(i * colunas + j));
