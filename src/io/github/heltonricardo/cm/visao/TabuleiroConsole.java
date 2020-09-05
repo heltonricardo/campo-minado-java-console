@@ -57,9 +57,11 @@ public class TabuleiroConsole {
 				else if (digitado.equals("2"))
 					tabuleiro.AlterarMarcacao(xy.next(), xy.next());
 			}
+			System.out.println(tabuleiro);
 			System.out.println("Você ganhou!");
 			
 		} catch (ExplosaoException e) {
+			System.out.println(tabuleiro);
 			System.out.println("Você perdeu!");
 		}
 	}
